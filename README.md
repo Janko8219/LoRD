@@ -32,7 +32,7 @@
 
 👉 <b>Copy this link and paste it on your browser Change Lord-official to your github username<b> <br><br>
 ```
-  https://heroku.com/deploy?template=https://github.com/Lord-official/LoRD-MD
+  https://heroku.com/deploy?template=https://github.com/Janko8219/LoRD-MD
 ```
 <br>
 
