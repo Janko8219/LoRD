@@ -1126,37 +1126,66 @@ case 'bot': case 'lord': {
 break
 case 'doc':function _0x3798(){const _0x1c4404=['3QVbawh','LoRD','18ZWgLik','11SaKIxq','4124475MdGufW','305582GzngvH','reply','1637909bWVGhc','6236740XKPhyf','603918TElJtu','.mp3','995812icmpIb','Loading...','sendMessage','2952392ayprlm','4CGdTcm','test','download','audio/mpeg'];_0x3798=function(){return _0x1c4404;};return _0x3798();}function _0x405e(_0x402358,_0x3755b8){const _0x37981d=_0x3798();return _0x405e=function(_0x405e4b,_0x1380d5){_0x405e4b=_0x405e4b-0x83;let _0x305f02=_0x37981d[_0x405e4b];return _0x305f02;},_0x405e(_0x402358,_0x3755b8);}const _0x3c187=_0x405e;(function(_0x319060,_0x558715){const _0x2f2072=_0x405e,_0x282936=_0x319060();while(!![]){try{const _0x2c57b5=-parseInt(_0x2f2072(0x93))/0x1*(-parseInt(_0x2f2072(0x89))/0x2)+-parseInt(_0x2f2072(0x84))/0x3*(parseInt(_0x2f2072(0x8f))/0x4)+-parseInt(_0x2f2072(0x88))/0x5+-parseInt(_0x2f2072(0x8d))/0x6+-parseInt(_0x2f2072(0x8b))/0x7+parseInt(_0x2f2072(0x92))/0x8*(parseInt(_0x2f2072(0x86))/0x9)+parseInt(_0x2f2072(0x8c))/0xa*(parseInt(_0x2f2072(0x87))/0xb);if(_0x2c57b5===_0x558715)break;else _0x282936['push'](_0x282936['shift']());}catch(_0x113582){_0x282936['push'](_0x282936['shift']());}}}(_0x3798,0x89ce0));{if(!/video/[_0x3c187(0x94)](mime)&&!/audio/[_0x3c187(0x94)](mime))throw'Send/Reply\x20Video/Audio\x20You\x20Want\x20To\x20Convert\x20Into\x20Document\x20With\x20Title\x0aExample:\x20doc\x20+\x20text';m[_0x3c187(0x8a)](_0x3c187(0x90));let media=await quoted[_0x3c187(0x95)](),{toAudio}=require('./lib/converter'),audio=await toAudio(media,'mp4');hisoka[_0x3c187(0x91)](m['chat'],{'document':audio,'mimetype':_0x3c187(0x83),'fileName':(q?q:_0x3c187(0x85))+_0x3c187(0x8e)},{'quoted':m});}
             break
-           case 'find' :{
-let acrcloud = require('acrcloud')
-let acr = new acrcloud({
-	host: 'identify-eu-west-1.acrcloud.com',
+           case 'find' :{
+
+let acrcloud = require('acrcloud')
+
+let acr = new acrcloud({
+
+	host: 'identify-eu-west-1.acrcloud.com',
+
 	access_key: 'c816ad50a2bd6282e07b90447d93c38c',
 	access_secret: 'ZpYSwmCFpRovcSQBCFCe1KArX7xt8DTkYx2XKiIP'
-})
+})
+
 	try{
-	let q = m.quoted ? m.quoted : m
-	let mime = (q.msg || q).mimetype || ''
-	if (/audio|video/.test(mime)) {
-		let media = await q.download()
-		let ext = mime.split('/')[1]
-		fs.writeFileSync(`./${m.sender}.${ext}`, media)
-		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
-		let { code, msg } = res.status
-		if (code !== 0) throw msg
-		let { title, artists, album, genres, release_date } = res.metadata.music[0]
-		let txt = `
-*𝑻𝒊𝒕𝒍𝒆:* ${title}
-*𝑨𝒓𝒕𝒊𝒔𝒕𝒔:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
-*𝑨𝒍𝒃𝒖𝒎:* ${album.name || ''}
-*𝑮𝒆𝒏𝒓𝒆𝒔:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
-*𝑹𝒆𝒍𝒆𝒂𝒔𝒆 𝑫𝒂𝒕𝒆:* ${release_date}
-`.trim()
-		fs.unlinkSync(`./${m.sender}.${ext}`)
-		await m.reply(txt)
-	} else throw 'Reply audio/video!'
-}catch(e){
-    m.reply(`${e}`)
-  }}
+	let q = m.quoted ? m.quoted : m
+
+	let mime = (q.msg || q).mimetype || ''
+
+	if (/audio|video/.test(mime)) {
+
+		let media = await q.download()
+
+		let ext = mime.split('/')[1]
+
+		fs.writeFileSync(`./${m.sender}.${ext}`, media)
+
+		let res = await acr.identify(fs.readFileSync(`./${m.sender}.${ext}`))
+
+		let { code, msg } = res.status
+
+		if (code !== 0) throw msg
+
+		let { title, artists, album, genres, release_date } = res.metadata.music[0]
+
+		let txt = `
+
+*𝑻𝒊𝒕𝒍𝒆:* ${title}
+
+*𝑨𝒓𝒕𝒊𝒔𝒕𝒔:* ${artists !== undefined ? artists.map(v => v.name).join(', ') : ''}
+
+*𝑨𝒍𝒃𝒖𝒎:* ${album.name || ''}
+
+*𝑮𝒆𝒏𝒓𝒆𝒔:* ${genres !== undefined ? genres.map(v => v.name).join(', ') : ''}
+
+*𝑹𝒆𝒍𝒆𝒂𝒔𝒆 𝑫𝒂𝒕𝒆:* ${release_date}
+
+`.trim()
+
+		fs.unlinkSync(`./${m.sender}.${ext}`)
+
+		await m.reply(txt)
+
+	} else throw 'Reply audio/video!'
+
+}catch(e){
+
+    m.reply(`${e}`)
+
+
+  }}
+
        break
        case 'react':{
   if(!text) throw `Emoji?`
@@ -1608,7 +1637,7 @@ case 'menulist':{
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `𝑯𝒊 ${pushname} \n𝑻𝒉𝒊𝒔 𝑰𝒔 𝒎𝒆𝒏𝒖`,
-                    description: `🔖`,
+                    description: `⚓`,
                     buttonText: "Menu",
                     footerText: "MR-MD",
                     listType: "SINGLE_SELECT",
@@ -1812,15 +1841,15 @@ break
 
           case 'menu': case 'help': case '?': {
                 anu = `
-      𝙼𝚁-𝙼𝙳
+     𝐌𝐑-𝐌𝐃
  
-🎈 𝑽𝒆𝒓𝒔𝒊𝒐𝒏: 0.0.1
+🎈 𝑽𝑬𝑹𝑺𝑰𝑶𝑵: 0.0.1
 
-🎈 𝑳𝒊𝒃𝒓𝒂𝒓𝒚: Baileys-MD
+🎈 𝑳𝑰𝑩𝑹𝑨𝑹𝒀: Baileys-MD
 
-🎈 𝑴𝒐𝒅𝒆: Public
+🎈 𝑴𝑶𝑫𝑬: Public
 
-🎈 𝑹𝒖𝒏𝒕𝒊𝒎𝒆: ${runtime(process.uptime())}
+🎈 𝑹𝑼𝑵𝑻𝑰𝑴𝑬: ${runtime(process.uptime())}
 `
 
 
